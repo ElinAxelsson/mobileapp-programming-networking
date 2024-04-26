@@ -2,38 +2,43 @@
 # Rapport
 
 **Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Jag började med att lägga till en RecycleView till min kod. Detta var 
+lite krångligt då jag först inte förstod uppgiftsbeskrivningen till 100%.
+Sedan lade jag till en Mountain-klass och en RecycleViewAdapter. I Mountain-
+klassen initierade jag variabeln för namnen på bergen. 
+Jag ändrade JSON_URL till länken med data vi blev tilldelade. 
+Denna länk fungerade hemma och appen visade då namnen på bergen från länken
+men i skolan visade den namnen från JSON_FILE på grund av brandväggs-problem.
+Nedan följer kodexempel på Mountain-klassen.
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+public class Mountain {
+    private String name;
+
+
+    public Mountain(String name) {
+        this.name = name;
     }
+
+    public String getName() {
+        
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+
 }
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Berg.png)
 
 Läs gärna:
 

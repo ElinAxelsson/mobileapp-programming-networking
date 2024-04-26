@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         gson =new Gson();
+
+
         for (int i=0;i< items.size();i++) {
             Log.d("hej", items.get(i).toString());
             recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
@@ -38,20 +40,22 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         RecyclerView view = findViewById(R.id.recyclerView);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
-        //new JsonFile(this, this).execute(JSON_FILE);
+        new JsonFile(this, this).execute(JSON_FILE);
         new JsonTask(this).execute(JSON_URL);
     }
     @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onPostExecute(String json) {
-        Log.d("Hej", json);
+        Log.d("Hej", "" + json);
         Type type = new TypeToken<List<Mountain>>() {}.getType();
         List<Mountain> listOfMountains = gson.fromJson(json, type);
         items.clear();
-        items.addAll(listOfMountains);
-        for (int i=0;i< items.size();i++) {
-            Log.d("Elinparsear", items.get(i).toString());
-            recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
+        if(listOfMountains != null) {
+            items.addAll(listOfMountains);
+            for (int i = 0; i < items.size(); i++) {
+                Log.d("Elinparsear", items.get(i).toString());
+                recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
+            }
         }
         adapter.notifyDataSetChanged();
     }
